@@ -47,3 +47,6 @@ jobs:
           echo ${{inputs.environment}} is your environment,
           echo you are from ${{inputs.location}}.
           echo test, and deploy your project.
+      - name: use github api with pat
+        run: |
+            curl -H "Authorization: token ${{secrets.Ar_clasic_token}}" https://api.github.com/user
