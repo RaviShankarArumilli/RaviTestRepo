@@ -1,0 +1,19 @@
+name: comment on pull request
+
+on: 
+    pull_request:
+       types: [opened, synchronize]
+
+jobs:
+    comment-job:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: comment on pull request 
+          env:
+           GITHUB_TOKEN: ${{ secrets.Ar_clasic_token }}
+          run: |
+              PR_NUMBRR= ${{ github.event.pull_request_number }}
+              curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
+              -d '{"body": "thank-you for your contribution"}' \
+              https://api.github.com/repos/OWNER/REPO/issues/$PR_NUMBER/comments
